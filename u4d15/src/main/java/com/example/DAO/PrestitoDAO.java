@@ -1,5 +1,6 @@
 package com.example.DAO;
 
+import com.example.entities.ElementoCatalogo;
 import com.example.entities.Prestito;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -42,6 +43,9 @@ public class PrestitoDAO {
         }
     }
 
+    public Prestito findById(long id) {
+        return em.find(Prestito.class, id);
+    }
 
 
 }

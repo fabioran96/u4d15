@@ -1,5 +1,6 @@
 package com.example.DAO;
 
+import com.example.entities.ElementoCatalogo;
 import com.example.entities.Rivista;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -41,4 +42,9 @@ public class RivistaDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public Rivista findById(long id) {
+        return em.find(Rivista.class, id);
+    }
+
 }

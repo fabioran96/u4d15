@@ -1,5 +1,6 @@
 package com.example.DAO;
 
+import com.example.entities.ElementoCatalogo;
 import com.example.entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -43,4 +44,11 @@ public class UtenteDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public Utente findById(long id) {
+        return em.find(Utente.class, id);
+    }
+
+    
+
 }

@@ -1,5 +1,6 @@
 package com.example.DAO;
 
+import com.example.entities.ElementoCatalogo;
 import com.example.entities.Libro;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -43,4 +44,9 @@ public class LibroDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public Libro findById(long id) {
+        return em.find(Libro.class, id);
+    }
+
 }

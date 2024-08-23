@@ -26,4 +26,27 @@ public class ElementoCatalogoDAO {
             }
         }
     }
+
+    public void delete(long id) {
+        try {
+            EntityTransaction t = em.getTransaction();
+            ElementoCatalogo found = em.find(ElementoCatalogo.class, id);
+            if (found != null) {
+                t.begin();
+                em.remove(found);
+                t.commit();
+                System.out.println("ElementoCatalogo eliminato con successo!");
+            } else {
+                System.out.println("ElementoCatalogo non trovato");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public ElementoCatalogo findById(long id) {
+        return em.find(ElementoCatalogo.class, id);
+    }
+
+
 }
