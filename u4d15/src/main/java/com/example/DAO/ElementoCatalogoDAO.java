@@ -4,6 +4,8 @@ import com.example.entities.ElementoCatalogo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.List;
+
 public class ElementoCatalogoDAO {
     private EntityManager em;
 
@@ -47,6 +49,31 @@ public class ElementoCatalogoDAO {
     public ElementoCatalogo findById(long id) {
         return em.find(ElementoCatalogo.class, id);
     }
+
+    public List<ElementoCatalogo> findByAnnoPubblicazione(int annoPubblicazione) {
+        try {
+            return em.createQuery("SELECT e FROM ElementoCatalogo e WHERE e.annoPubblicazione = :anno", ElementoCatalogo.class)
+                    .setParameter("anno", annoPubblicazione)
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public List<ElementoCatalogo> findByTitolo(String titolo) {
+        try {
+            return em.createQuery("SELECT e FROM ElementoCatalogo e WHERE e.titolo LIKE :titolo", ElementoCatalogo.class)
+                    .setParameter("titolo", "%" + titolo + "%")
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+
+
 
 
 }

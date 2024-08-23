@@ -49,6 +49,6 @@ public class UtenteDAO {
         return em.find(Utente.class, id);
     }
 
-    
+
 
 }

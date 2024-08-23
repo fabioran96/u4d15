@@ -5,6 +5,8 @@ import com.example.entities.Libro;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.List;
+
 public class LibroDAO {
     private EntityManager em;
 
@@ -48,5 +50,18 @@ public class LibroDAO {
     public Libro findById(long id) {
         return em.find(Libro.class, id);
     }
+
+    public List<Libro> findByAutore(String autore) {
+        try {
+            return em.createQuery("SELECT l FROM Libro l WHERE l.autore = :autore", Libro.class)
+                    .setParameter("autore", autore)
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+
 
 }
