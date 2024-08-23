@@ -24,4 +24,21 @@ public class RivistaDAO {
             }
         }
     }
+
+    public void delete(long id){
+        try {
+            EntityTransaction t = em.getTransaction();
+            Rivista found = em.find(Rivista.class, id);
+            if (found != null){
+                t.begin();
+                em.remove(found);
+                t.commit();
+                System.out.println("Rivista eliminata con successo!");
+            } else {
+                System.out.println("Rivista non trovata");
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

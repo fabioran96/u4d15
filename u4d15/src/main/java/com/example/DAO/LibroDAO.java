@@ -25,4 +25,22 @@ public class LibroDAO {
             }
         }
     }
+
+    public void delete(long id){
+        try {
+            EntityTransaction t = em.getTransaction();
+            Libro found = em.find(Libro.class, id);
+            if (found != null){
+                t.begin();
+                em.remove(found);
+                t.commit();
+                System.out.println("Libro eliminato con successo");
+            } else {
+                System.out.println("Libro non trovato");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

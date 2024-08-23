@@ -33,6 +33,8 @@ public class Application {
 
             Utente utente1 = new Utente("Mario", "Rossi", java.time.LocalDate.of(2000,3,12),"ABC124");
             utenteDAO.save(utente1);
+
+            utenteDAO.delete(utente.getId());
         } finally {
             em.close();
             emf.close();

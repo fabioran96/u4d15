@@ -25,5 +25,23 @@ public class PrestitoDAO {
         }
     }
 
+    public void delete(long id) {
+        try {
+            EntityTransaction t = em.getTransaction();
+            Prestito found = em.find(Prestito.class, id);
+            if (found != null) {
+                t.begin();
+                em.remove(found);
+                t.commit();
+                System.out.println("Prestito eliminato con successo!");
+            } else {
+                System.out.println("Prestito non trovato");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
 
 }

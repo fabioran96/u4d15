@@ -26,4 +26,21 @@ public class UtenteDAO {
             }
         }
     }
+
+    public void delete(long id){
+        try {
+            EntityTransaction t = em.getTransaction();
+            Utente found = em.find(Utente.class, id);
+            if (found != null){
+                t.begin();
+                em.remove(found);
+                t.commit();
+                System.out.println("Utente eliminato con successo");
+            } else {
+                System.out.println("Utente non trovato");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
