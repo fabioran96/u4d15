@@ -17,6 +17,8 @@ public class UtenteDAO {
             t.begin();
             em.persist(utente);
             t.commit();
+            System.out.println("Utente salvato con successo!");
+
         } catch (Exception e){
             System.out.println(e.getMessage());
             if (em.getTransaction().isActive()) {

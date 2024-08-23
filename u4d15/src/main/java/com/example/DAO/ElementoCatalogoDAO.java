@@ -15,10 +15,9 @@ public class ElementoCatalogoDAO {
         try{
             EntityTransaction t = em.getTransaction();
             t.begin();
-
             em.persist(elemento);
-
             t.commit();
+            System.out.println("ElementoCatalogo salvato con successo!");
         } catch (Exception e){
             System.out.println(e.getMessage());
 

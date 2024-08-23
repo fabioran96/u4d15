@@ -11,12 +11,13 @@ public class LibroDAO {
         this.em = em;
     }
 
-    private void save(Libro libro){
+    public void save(Libro libro){
         try {
             EntityTransaction t = em.getTransaction();
             t.begin();
             em.persist(libro);
             t.commit();
+            System.out.println("Libro salvato con successo!");
         } catch (Exception e){
             System.out.println(e.getMessage());
             if (em.getTransaction().isActive()) {
